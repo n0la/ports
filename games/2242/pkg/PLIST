@@ -1,0 +1,19 @@
+@comment $OpenBSD$
+@bin bin/alice
+@bin bin/qs-character
+@bin bin/qs-db
+@bin bin/qs-dice
+include/qstar/
+include/qstar/character.h
+include/qstar/container.h
+include/qstar/db.h
+include/qstar/dice.h
+include/qstar/item.h
+include/qstar/race.h
+include/qstar/rules.h
+include/qstar/skill.h
+include/qstar/util.h
+include/qstar/value.h
+@lib lib/libqstar.so.${LIBqstar_VERSION}
+share/qs-db/
+share/qs-db/schema.sqlite
