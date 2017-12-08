@@ -3,12 +3,12 @@
 COMMENT =	shitty IRC bot framework
 
 # Once 0.1 is released it will be automatically bigger than 0.0.XXXXX
-V =		0.0.20171208.3
+V =		0.0.20171208.4
 DISTNAME =	ibd-${V}
 
 GH_ACCOUNT =	n0la
 GH_PROJECT =	ibd
-GH_COMMIT = 	52db036ea54aece17d953894737229fc6040a2a9
+GH_COMMIT = 	02f04750da905057fda4026448bf0ba8653931e5
 
 SHARED_LIBS =	irc		0.0 # 0.1
 
