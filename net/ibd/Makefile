@@ -25,6 +25,7 @@ WANTLIB =		c crypto pthread ssl tls
 
 MODULES =		devel/cmake
 BUILD_DEPENDS =		devel/libevent2 \
-			devel/check
+			devel/check \
+			devel/bison
 
 .include <bsd.port.mk>
