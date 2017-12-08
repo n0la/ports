@@ -13,3 +13,4 @@ lib/pkgconfig/libirc-1.0.pc
 libexec/ibd/
 libexec/ibd/log
 @bin libexec/ibd/nickserv
+@rcscript ${RCDIR}/ibd
