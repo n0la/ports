@@ -1,0 +1,3 @@
+ibd is a IRC bot framework written in C, it forks its
+children and uses a C library for IRC (libirc) that
+allows the children to implement a IRC bot.
