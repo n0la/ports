@@ -24,6 +24,7 @@ PERMIT_PACKAGE_CDROM =	Yes
 WANTLIB =		c crypto pthread ssl tls
 
 MODULES =		devel/cmake
-BUILD_DEPENDS =		devel/libevent2
+BUILD_DEPENDS =		devel/libevent2 \
+			devel/check
 
 .include <bsd.port.mk>
