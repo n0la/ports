@@ -1,9 +1,0 @@
-#!/bin/sh
-#
-# $OpenBSD: rc.template,v 1.11 2017/05/27 19:26:35 ajacoutot Exp $
-
-daemon="${TRUEPREFIX}/bin/ibd"
-
-. /etc/rc.d/rc.subr
-
-rc_cmd $1
