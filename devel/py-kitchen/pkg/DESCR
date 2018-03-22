@@ -1,0 +1,5 @@
+The Kitchen module provides a python API for all sorts of little
+useful snippets of code that everybody ends up writing for their
+projects but never seem big enough to build an independent
+release. Use kitchen and stop cutting and pasting that code over and
+over.
