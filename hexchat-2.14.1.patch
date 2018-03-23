@@ -1,0 +1,90 @@
+diff --git a/net/hexchat/Makefile b/net/hexchat/Makefile
+index fc0a5c3a247..ed5d3d037d5 100644
+--- a/net/hexchat/Makefile
++++ b/net/hexchat/Makefile
+@@ -1,10 +1,9 @@
+ # $OpenBSD: Makefile,v 1.18 2017/10/23 17:11:02 sthen Exp $
+ 
+ COMMENT =		GTK+2 IRC Client
+-DISTNAME =		hexchat-2.12.3
++DISTNAME =		hexchat-2.14.1
+ EXTRACT_SUFX =		.tar.xz
+ CATEGORIES =		net x11
+-REVISION =		1
+ 
+ HOMEPAGE =		http://hexchat.github.io/
+ MAINTAINER =		Florian Stinglmayr <florian@n0la.org>
+@@ -23,7 +22,8 @@ WANTLIB += xcb xcb-render xcb-shm z
+ 
+ MASTER_SITES =		http://dl.hexchat.net/hexchat/
+ 
+-MODULES =		textproc/intltool \
++MODULES =		devel/meson \
++			textproc/intltool \
+ 			lang/lua \
+ 			lang/python
+ 
+@@ -45,19 +45,13 @@ RUN_DEPENDS =		devel/desktop-file-utils \
+ 			devel/iso-codes \
+ 			x11/gtk+3,-guic
+ 
+-CONFIGURE_STYLE =	gnu
+-CONFIGURE_ARGS +=	--enable-ipv6 \
+-			--enable-dbus \
+-			--disable-sysinfo \
+-			--disable-libcanberra
+-CONFIGURE_ENV =		CPPFLAGS=-I${LOCALBASE}/include \
+-			LDFLAGS=-L${LOCALBASE}/lib \
+-			LUA=${MODLUA_FLAVOR}
++CONFIGURE_ARGS +=	-Dwith-lua=${MODLUA_FLAVOR} \
++			-Dwith-dbus=true \
++			-Dwith-sysinfo=false \
++			-Dwith-libcanberra=false
+ 
+ LIBTOOL_FLAGS =		--tag=disable-static
+ 
+-USE_GMAKE =		Yes
+-
+ NO_TEST =		Yes
+ 
+ .include <bsd.port.mk>
+diff --git a/net/hexchat/distinfo b/net/hexchat/distinfo
+index 6aeeaa212bf..ea5ade1974a 100644
+--- a/net/hexchat/distinfo
++++ b/net/hexchat/distinfo
+@@ -1,2 +1,2 @@
+-SHA256 (hexchat-2.12.3.tar.xz) = bysiNyx6ntj/q4FweWOOj0F49fi6Y8ics7qgG+YU8ro=
+-SIZE (hexchat-2.12.3.tar.xz) = 1577736
++SHA256 (hexchat-2.14.1.tar.xz) = sDLkvOviIp+HBHQ5l5oSRt3L9Znn5Ti6o/Kr+smgA6I=
++SIZE (hexchat-2.14.1.tar.xz) = 1281872
+diff --git a/net/hexchat/pkg/PLIST b/net/hexchat/pkg/PLIST
+index 9ec857c09a9..cd87d68d14b 100644
+--- a/net/hexchat/pkg/PLIST
++++ b/net/hexchat/pkg/PLIST
+@@ -6,7 +6,6 @@ lib/hexchat/plugins/
+ @comment lib/hexchat/plugins/checksum.la
+ lib/hexchat/plugins/checksum.so
+ @comment lib/hexchat/plugins/doat.la
+-lib/hexchat/plugins/doat.so
+ @comment lib/hexchat/plugins/fishlim.la
+ lib/hexchat/plugins/fishlim.so
+ @comment lib/hexchat/plugins/lua.la
+@@ -17,9 +16,7 @@ lib/hexchat/plugins/perl.so
+ lib/hexchat/plugins/python.so
+ lib/pkgconfig/hexchat-plugin.pc
+ @man man/man1/hexchat.1
+-share/appdata/
+-share/appdata/hexchat.appdata.xml
+-share/applications/hexchat.desktop
++share/applications/io.github.Hexchat.desktop
+ share/dbus-1/services/org.hexchat.service.service
+ share/icons/hicolor/48x48/apps/hexchat.png
+ share/icons/hicolor/scalable/apps/hexchat.svg
+@@ -76,6 +73,7 @@ share/locale/vi/LC_MESSAGES/hexchat.mo
+ share/locale/wa/LC_MESSAGES/hexchat.mo
+ share/locale/zh_CN/LC_MESSAGES/hexchat.mo
+ share/locale/zh_TW/LC_MESSAGES/hexchat.mo
++share/metainfo/io.github.Hexchat.appdata.xml
+ @exec %D/bin/gtk-update-icon-cache -q -t %D/share/icons/hicolor
+ @unexec-delete %D/bin/gtk-update-icon-cache -q -t %D/share/icons/hicolor
+ @exec %D/bin/update-desktop-database
