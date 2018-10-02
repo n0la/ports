@@ -1,0 +1,24 @@
+$OpenBSD$
+
+Index: glfw/linux_joystick.c
+--- glfw/linux_joystick.c.orig
++++ glfw/linux_joystick.c
+@@ -25,6 +25,8 @@
+ //
+ //========================================================================
+ 
++#ifndef __OpenBSD__
++
+ #include "internal.h"
+ 
+ #include <sys/types.h>
+@@ -428,7 +430,8 @@ int _glfwPlatformPollJoystick(_GLFWjoystick* js, int m
+     return js->present;
+ }
+ 
++#endif
++
+ void _glfwPlatformUpdateGamepadGUID(char* guid)
+ {
+ }
+-

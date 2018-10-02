@@ -1,0 +1,20 @@
+$OpenBSD$
+
+Index: linux-launcher.c
+--- linux-launcher.c.orig
++++ linux-launcher.c
+@@ -118,6 +118,14 @@ read_exe_path(char *exe, size_t buf_sz) {
+     return true;
+ }
+ 
++#elif defined(__OpenBSD__)
++
++static inline bool
++read_exe_path(char *exe, size_t buf_sz) {
++    strlcpy(exe, "/usr/local/bin/kitty", buf_sz);
++    return true;
++}
++
+ #else
+ 
+ static inline bool

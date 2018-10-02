@@ -1,0 +1,14 @@
+$OpenBSD$
+
+Index: glfw/glfw.py
+--- glfw/glfw.py.orig
++++ glfw/glfw.py
+@@ -41,7 +41,7 @@ def init_env(env, pkg_config, at_least_version, module
+             split()
+         )
+     else:
+-        ans.ldpaths.extend('-lrt -lm -ldl'.split())
++        ans.ldpaths.extend('-lm'.split())
+     sinfo = json.load(open(os.path.join(base, 'source-info.json')))
+     module_sources = list(sinfo[module]['sources'])
+     if module in ('x11', 'wayland'):
